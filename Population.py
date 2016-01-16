@@ -1,8 +1,14 @@
 from Utilities import choose_randomly
 from Automata import Automaton
 from retic import List
+from copy import copy
 from random import randrange
-from Utilities import rand_num
+
+
+#TODO: add type to variable
+data = (list(map(int, [line.strip() for line in open(
+    "/Users/zeinamigeed/sample_fsm_python/population-random-numbers.txt")])))
+rand_num = (element for element in data)
 
 class Population:
     """
@@ -11,6 +17,7 @@ class Population:
     #TODO: cannot add a return type due to bug
     def __init__(self, a: List(Automaton)):
         self.a = a
+        self.b = [copy(x) for x in a]
 
     def payoffs(self):
         result = []
@@ -26,7 +33,7 @@ class Population:
         :return: Population
         """
         self.reset()
-        for i in range(0, round(len(self.a)/2)):
+        for i in range(0, len(self.a) - 1, 2):
             p1 = self.a[i]
             p2 = self.a[i+1]
             [a1, a2] = p1.interact(p2, r)
@@ -46,23 +53,25 @@ class Population:
         payoffs = self.payoffs()
         substitutes = choose_randomly(payoffs, rate)
         # clone all automata in a at substitues
-        b = self.a.copy()
         # then "move" these clones into the first "rate" slots of a
         for i in range(rate):
             index = substitutes[i]
-            self.a[i] = b[index]
+            self.a[i] = copy(self.b[index])
         self.shuffle()
         return self
 
     #TODO: add types to void
     def shuffle(self):
-        res = self.a
+        self.b = [copy(x) for x in self.a]
         for i in range(len(self.a)):
-            j = randrange(i + 1)
-            #j = next(rand_num)
-            if j != 1:
-                res[i], res[j] = res[j], res[i]
-            self.a = res
+            #j = randrange(i + 1)
+            j = next(rand_num)
+            if j != i:
+                self.b[i] = self.b[j]
+            self.b[j] = self.a[i]
+        tmp = [copy(x) for x in self.a]
+        self.a = [copy(x) for x in self.b]
+        self.b = tmp
 
     #TODO: program crashes when adding a void return type
     def reset(self):

@@ -31,8 +31,10 @@ class Automaton:
         t2 = other.table
 
         for i in range(0, r):
-            (p1, p2) = self.PAYOFF_TABLE[c1][c2]
-            c1 = t1[c1][c2]
+            input = c2
+            (p1, p2) = self.PAYOFF_TABLE[c1][input]
+
+            c1 = t1[c1][input]
             y1 = y1 + p1
             c2 = t2[c2][c1]
             y2 = y2 + p2
@@ -40,7 +42,6 @@ class Automaton:
         self.payoff = y1
         other.current = c2
         other.payoff = y2
-
         return [self, other]
 
     def pay(self) -> float:
@@ -80,3 +81,7 @@ class Automaton:
             return (self.current == other.current and self.payoff ==
                     other.payoff and self.initial == other.initial and
                     self.table == other.table)
+
+    def __str__(self):
+        return str("current: %s payoff: %s " % \
+               (self.current, self.payoff))

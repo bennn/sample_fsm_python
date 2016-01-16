@@ -5,7 +5,8 @@ from pip._vendor.requests.packages.urllib3.connectionpool import xrange
 
 
 #TODO: add type to variable
-data = (list(map(float, [line.strip() for line in open("random-numbers.txt")])))
+data = (list(map(float, [line.strip() for line in open(
+    "/Users/zeinamigeed/sample_fsm_python/utill-random-numbers.txt")])))
 rand_num = (element for element in data)
 
 
@@ -20,6 +21,7 @@ def accumulated_s(probabilities):
     return result
 
 def choose_randomly(probabilities, speed):
+
     s = accumulated_s(probabilities)
     res = []  ### changed here
     for n in range(speed):
@@ -27,7 +29,7 @@ def choose_randomly(probabilities, speed):
         r = next(rand_num)
         for i in range(len(s)):
             if r < s[i]:
-                res = [i] + res  ### and here
+                res = res + [i]   ### and here
                 break
     return res  ### and here
 

@@ -3,7 +3,7 @@ from Other import build_random_population
 from retic import List
 
 def run() -> List(List(float)):
-    simulation_to_lines(evolve(build_random_population(100), 1000, 10, 20))
+    simulation_to_lines(evolve(build_random_population(100), 10, 2, 1))
 
 def evolve(p, c: int, s: int, r: int) -> List(float):
     """
@@ -21,8 +21,8 @@ def evolve(p, c: int, s: int, r: int) -> List(float):
         p2 = p.match_up(r)
         pp = p2.payoffs()
         p3 = p2.regenerate(s)
-
-        payoffs = [relative_average(pp, r)] + payoffs
+        payoffs = payoffs + [relative_average(pp, r)]
+        print(pp)
         p = p3
 
     return payoffs
