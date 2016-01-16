@@ -57,7 +57,7 @@ class Automaton:
         reset payoff and current state to initial strategy
         :return: Automaton
         """
-        return Automaton(self.current, 0, self.table, self.initial)
+        return Automaton(self.initial, 0, self.table, self.initial)
 
     #TODO: cannot type due to bug
     def reset(self):
