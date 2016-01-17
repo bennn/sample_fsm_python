@@ -1,8 +1,8 @@
-from retic import List
+from retic import List, Void
 from retic import Dyn
 class Automaton:
 
-    #TODO: Variables are not typed yet
+    #TODO: Variables cannot be typed in retic
     PAYOFF_TABLE = [[(3, 3), (0, 4)],
                     [(4, 0), (1, 1)]]
 
@@ -85,3 +85,5 @@ class Automaton:
     def __str__(self):
         return str("current: %s payoff: %s " % \
                (self.current, self.payoff))
+
+

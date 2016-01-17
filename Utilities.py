@@ -4,13 +4,13 @@ from random import random
 from pip._vendor.requests.packages.urllib3.connectionpool import xrange
 
 
-#TODO: add type to variable
+#TODO: cannot type variables in retic
 data = (list(map(float, [line.strip() for line in open(
     "/Users/zeinamigeed/sample_fsm_python/utill-random-numbers.txt")])))
 rand_num = (element for element in data)
 
 
-def accumulated_s(probabilities):
+def accumulated_s(probabilities:List(float))->List(float):
     total = sum(probabilities)
     payoffs = probabilities
     result = []
@@ -20,7 +20,7 @@ def accumulated_s(probabilities):
         result = result + [next/total]
     return result
 
-def choose_randomly(probabilities, speed):
+def choose_randomly(probabilities:List(float), speed:int):
 
     s = accumulated_s(probabilities)
     res = []  ### changed here

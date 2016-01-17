@@ -1,11 +1,11 @@
 from Utilities import choose_randomly
 from Automata import Automaton
-from retic import List
+from retic import List, Void
 from copy import copy
 from random import randrange
 
 
-#TODO: add type to variable
+#TODO: cannot type a variable in retic
 data = (list(map(int, [line.strip() for line in open(
     "/Users/zeinamigeed/sample_fsm_python/population-random-numbers.txt")])))
 rand_num = (element for element in data)
@@ -57,19 +57,16 @@ class Population:
         self.shuffle()
         return self
 
-    #TODO: add types to void
-    def shuffle(self):
+    def shuffle(self)->Void:
         b = copy(self.a)
         for i in range(len(self.a)):
-            #j = randrange(i + 1)
             j = next(rand_num)
             if j != i:
                 b[i] = b[j]
             b[j] = self.a[i]
         self.a = b
 
-    #TODO: program crashes when adding a void return type
-    def reset(self):
+    def reset(self)->Void:
         """
         Reset all automata in a
         :return: None

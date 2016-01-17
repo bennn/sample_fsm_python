@@ -3,7 +3,7 @@ from Population import Population
 from random import randrange
 
 
-#TODO: add type to variable
+#TODO: Cannot type variable in retic
 data = (list(map(int, [line.strip() for line in open(
     "/Users/zeinamigeed/sample_fsm_python/automata-random-numbers.txt")])))
 rand_num = (element for element in data)
