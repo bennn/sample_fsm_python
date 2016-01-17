@@ -1,6 +1,7 @@
 from Utilities import relative_average
 from Other import build_random_population
-from retic import List
+from retic import List, Void
+
 
 def run() -> List(List(float)):
     simulation_to_lines(evolve(build_random_population(100), 10, 2, 1))
@@ -22,13 +23,11 @@ def evolve(p, c: int, s: int, r: int) -> List(float):
         pp = p2.payoffs()
         p3 = p2.regenerate(s)
         payoffs = payoffs + [relative_average(pp, r)]
-        print(pp)
         p = p3
 
     return payoffs
 
-#TODO: Adding a void return type crashes program
-def simulation_to_lines(data: List(float)):
+def simulation_to_lines(data: List(float))->Void:
     """
     Turn average payoffs into a list of Cartesian points
     :param data: [Payoffs]
