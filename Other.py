@@ -16,16 +16,9 @@ def make_random_automaton(n: int):
     :param n:
     :return: Automation
     """
-    #seed = randrange(n)
     seed = (next(rand_num))
-
-    table = []
-    for i in range(n):
-        #trans = [randrange(n) for i in range(n)]
-        trans = [(next(rand_num)) for i in range(n)]
-        table = table + [trans]
+    table = [[(next(rand_num)) for _ in range(n)] for _ in range(n)]
     return Automaton(seed, 0, table, seed)
-
 
 #TODO: cannot add return type due to bug
 def build_random_population(n: int):
