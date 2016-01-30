@@ -1,8 +1,4 @@
 from retic import List
-from bisect import bisect
-from random import random
-from pip._vendor.requests.packages.urllib3.connectionpool import xrange
-
 
 #TODO: cannot type variables in retic
 data = (list(map(float, [line.strip() for line in open(
@@ -20,7 +16,7 @@ def accumulated_s(probabilities:List(float))->List(float):
         result = result + [next/total]
     return result
 
-def choose_randomly(probabilities:List(float), speed:int):
+def choose_randomly(probabilities:List(float), speed:int)->List(int):
 
     s = accumulated_s(probabilities)
     res = []  ### changed here

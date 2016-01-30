@@ -1,5 +1,6 @@
-from retic import List, Void
-from retic import Dyn
+from retic import List, Dyn, Void, String
+
+
 class Automaton:
 
     #TODO: Variables cannot be typed in retic
@@ -7,16 +8,16 @@ class Automaton:
                     [(4, 0), (1, 1)]]
 
     #TODO: Should return an Automation. Bug preventing adding this type.
-    def __init__(self, current: int,
+    def __init__(self: Automaton, current: int,
                  payoff: float,
                  table: List(List(int)),
-                 initial: int):
+                 initial: int)->Void:
         self.current = current
         self.payoff = payoff
         self.table = table
         self.initial = initial
 
-    def interact(self, other: Dyn, r: int) -> List:
+    def interact(self: Automaton, other: Automaton, r: int) -> List(Automaton):
         """
         the sum of pay-offs for the two respective automata over all rounds
         :param other: Automaton
@@ -44,30 +45,28 @@ class Automaton:
         other.payoff = y2
         return [self, other]
 
-    def pay(self) -> float:
+    def pay(self: Automaton) -> float:
         """
         reset the historic payoff
         :return: float
         """
         return self.payoff
 
-    #TODO: cannot type due to bug
-    def clone(self):
+    def clone(self: Automaton)->Automaton:
         """
         reset payoff and current state to initial strategy
         :return: Automaton
         """
         return Automaton(self.initial, 0, self.table, self.initial)
 
-    #TODO: cannot type due to bug
-    def reset(self):
+    def reset(self: Automaton)->Automaton:
         """
         reset the historic payoff
         :return: Automation
         """
         return Automaton(self.current, 0, self.table, self.initial)
 
-    def compute_payoffs(self, other_current: int) -> List(float):
+    def compute_payoffs(self: Automaton, other_current: int) -> List(float):
         """
         :param other_current: Natural
         :return: [Automaton]
@@ -82,7 +81,7 @@ class Automaton:
                     other.payoff and self.initial == other.initial and
                     self.table == other.table)
 
-    def __str__(self):
+    def __str__(self: Automaton) -> String:
         return str("current: %s payoff: %s " % \
                (self.current, self.payoff))
 

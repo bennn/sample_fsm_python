@@ -1,9 +1,9 @@
+#!/usr/bin/env retic
+
+from retic import List, Void
 from Utilities import choose_randomly
 from Automata import Automaton
-from retic import List, Void
 from copy import copy
-from random import randrange
-
 
 #TODO: cannot type a variable in retic
 data = (list(map(int, [line.strip() for line in open(
@@ -14,18 +14,17 @@ class Population:
     """
     Populations of Automata
     """
-    #TODO: cannot add a return type due to bug
-    def __init__(self, a: List(Automaton)):
+
+    def __init__(self: Population, a: List(Automaton)) -> Void:
         self.a = a
 
-    def payoffs(self):
+    def payoffs(self: Population)->List(float):
         result = []
         for element in self.a:
             result = result + [element.pay()]
         return result
 
-    #TODO: cannot add return type due to bug
-    def match_up(self, r: int):
+    def match_up(self: Population, r: int) -> Population:
         """
         matches up neighboring pairs of
         automata in this population for r rounds
@@ -40,8 +39,7 @@ class Population:
             self.a[i+1] = a2
         return self
 
-    #TODO: cannot add return type due to bug
-    def regenerate(self, rate: int):
+    def regenerate(self:Population, rate: int)->Population:
         """
         Replaces r elements of p with r 'children' of randomly chosen
         fittest elements of p, also shuffle constraint (r < (len p))
@@ -57,7 +55,7 @@ class Population:
         self.shuffle()
         return self
 
-    def shuffle(self)->Void:
+    def shuffle(self:Population)->Void:
         b = copy(self.a)
         for i in range(len(self.a)):
             j = next(rand_num)
@@ -66,9 +64,12 @@ class Population:
             b[j] = self.a[i]
         self.a = b
 
-    def reset(self)->Void:
+    def reset(self:Population)->Void:
         """
         Reset all automata in a
         :return: None
         """
         self.a = [element.reset() for element in self.a]
+
+
+

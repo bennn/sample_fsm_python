@@ -1,5 +1,5 @@
-from Automata import Automaton
 from Population import Population
+from Automata import Automaton
 from random import randrange
 
 
@@ -20,7 +20,7 @@ def make_random_automaton(n: int):
     table = [[(next(rand_num)) for _ in range(n)] for _ in range(n)]
     return Automaton(seed, 0, table, seed)
 
-#TODO: cannot add return type due to bug
+
 def build_random_population(n: int):
     """
     for even n, build a population of size n
