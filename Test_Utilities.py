@@ -1,5 +1,5 @@
 import pytest
-from Utilities import relative_average, accumulated_s
+from Untyped.Utilities import relative_average, accumulated_s
 
 def test_relative_average():
     assert relative_average([1, 2, 3], 1) == 2

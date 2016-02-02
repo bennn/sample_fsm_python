@@ -1,6 +1,6 @@
 import pytest
-from Automata import Automaton
-from Other import make_random_automaton
+from Untyped.Automata import Automaton
+from Untyped.Other import make_random_automaton
 
 COOPERATE = 0
 DEFECT = 1

@@ -1,5 +1,5 @@
 from Test_Automata import defects, cooperates, tit_for_tat, grim_trigger
-from Population import Population
+from Untyped.Population import Population
 
 a1 = [defects(0), cooperates(0)]
 p1 = Population(a1)

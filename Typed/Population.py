@@ -1,5 +1,4 @@
 #!/usr/bin/env retic
-
 from retic import List, Void
 from Utilities import choose_randomly
 from Automata import Automaton
