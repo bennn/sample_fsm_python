@@ -1,6 +1,3 @@
-from retic import List, Dyn, Void, String
-
-
 class Automaton:
 
     #TODO: Variables cannot be typed in retic
@@ -8,16 +5,13 @@ class Automaton:
                     [(4, 0), (1, 1)]]
 
     #TODO: Should return an Automation. Bug preventing adding this type.
-    def __init__(self: Automaton, current: int,
-                 payoff: float,
-                 table: List(List(int)),
-                 initial: int)->Void:
+    def __init__(self, current, payoff, table, initial):
         self.current = current
         self.payoff = payoff
         self.table = table
         self.initial = initial
 
-    def interact(self: Automaton, other: Automaton, r: int) -> List(Automaton):
+    def interact(self, other, r):
         """
         the sum of pay-offs for the two respective automata over all rounds
         :param other: Automaton
@@ -45,35 +39,35 @@ class Automaton:
         other.payoff = y2
         return [self, other]
 
-    def pay(self: Automaton) -> float:
+    def pay(self):
         """
         reset the historic payoff
         :return: float
         """
         return self.payoff
 
-    def clone(self: Automaton)->Automaton:
+    def clone(self):
         """
         reset payoff and current state to initial strategy
         :return: Automaton
         """
         return Automaton(self.initial, 0, self.table, self.initial)
 
-    def reset(self: Automaton)->Automaton:
+    def reset(self):
         """
         reset the historic payoff
         :return: Automation
         """
         return Automaton(self.current, 0, self.table, self.initial)
 
-    def compute_payoffs(self: Automaton, other_current: int) -> List(float):
+    def compute_payoffs(self, other_current):
         """
         :param other_current: Natural
         :return: [Automaton]
         """
         return self.PAYOFF_TABLE[self.current][other_current]
 
-    def __eq__(self, other: Dyn) -> bool:
+    def __eq__(self, other):
         if not isinstance(other, Automaton):
             return False
         else:
@@ -81,7 +75,7 @@ class Automaton:
                     other.payoff and self.initial == other.initial and
                     self.table == other.table)
 
-    def __str__(self: Automaton) -> String:
+    def __str__(self):
         return str("current: %s payoff: %s " % \
                (self.current, self.payoff))
 
