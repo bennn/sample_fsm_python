@@ -73,7 +73,7 @@ class Automaton:
         """
         return self.PAYOFF_TABLE[self.current][other_current]
 
-    def __eq__(self, other: Dyn) -> bool:
+    def __eq__(self: Automaton, other: Dyn) -> bool:
         if not isinstance(other, Automaton):
             return False
         else:

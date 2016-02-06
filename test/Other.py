@@ -1,9 +1,5 @@
-import os, sys
-this_package_path = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(this_package_path, '..'))
-
-from Untyped.Population import Population
-from Untyped.Automata import Automaton
+from Population import Population
+from Automata import Automaton
 from random import randrange
 
 
@@ -13,7 +9,7 @@ data = (list(map(int, [line.strip() for line in open(
 rand_num = (element for element in data)
 
 
-def make_random_automaton(n):
+def make_random_automaton(n: int)->Automaton:
     """
     builds an n states x k inputs automation
     with a random transition table
@@ -25,7 +21,7 @@ def make_random_automaton(n):
     return Automaton(seed, 0, table, seed)
 
 
-def build_random_population(n):
+def build_random_population(n: int)->Population:
     """
     for even n, build a population of size n
     :param n: Natural

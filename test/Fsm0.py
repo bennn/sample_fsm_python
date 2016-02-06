@@ -12,7 +12,7 @@ def run() -> Void:
     print(simulation_to_lines(evolve(build_random_population(100), 10, 2, 1)))
     return
 
-def evolve(p, c, s, r):
+def evolve(p: Population, c: int, s: int, r: int) -> List(float):
     """
     Computes the list of average payoffs over the evolution of population
     p for c cycles of match_ups with r rounds per match and at birth/death
@@ -33,7 +33,7 @@ def evolve(p, c, s, r):
 
     return payoffs
 
-def simulation_to_lines(data):
+def simulation_to_lines(data: List(float))->List(Tuple(int, float)):
     """
     Turn average payoffs into a list of Cartesian points
     :param data: [Payoffs]

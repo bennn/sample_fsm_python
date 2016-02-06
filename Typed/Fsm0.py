@@ -9,7 +9,7 @@ from Other import build_random_population
 from retic import List, Void, Tuple
 
 def run() -> Void:
-    print(simulation_to_lines(evolve(build_random_population(100), 10, 2, 1)))
+    simulation_to_lines(evolve(build_random_population(100), 10, 2, 1))
     return
 
 def evolve(p: Population, c: int, s: int, r: int) -> List(float):
