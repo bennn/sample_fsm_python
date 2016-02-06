@@ -1,3 +1,4 @@
+import os
 import glob
 import itertools
 import subprocess
@@ -12,19 +13,23 @@ def run_all(benchmark, test, output):
     :param output: path
     :return: None
     """
+    print("hello from 'run_all'")
     directories = glob.glob('%s/*' % benchmark)
     names = [get_name(d) for d in directories]
 
     all_files = [glob.glob('%s/*' % d) for d in directories]
     lengths = [len(files) for files in all_files]
-    with open(output, 'r') as out:
+    print("got names = %s, got lengths = %s" % (names, lengths))
+    with open(output, 'w') as out:
+        print("Running benchmarks")
         for files in itertools.product(*all_files):
+            print("Running: %s" % list(files))
             for name, file in zip(names, files):
                 copyfile(file, '%s/%s.py' % (test, name))
-                t = run_1(test)
-                nums = [get_name(f) for f in files]
-                tag = '-'.join(nums)
-                print('%s   %s   %s' % (tag, count_types(nums, lengths), t), file=out)
+            t = run_1(test)
+            nums = [get_name(f) for f in files]
+            tag = '-'.join(nums)
+            print('%s   %s   %s' % (tag, count_types(nums, lengths), t), file=out)
 
 
 def count_types(nums, lengths):
@@ -37,18 +42,25 @@ def count_types(nums, lengths):
     total = 0
     for num, length in zip(nums, lengths):
         b = bin(int(num))[2:]
-        l = log2(length)
+        l = int(log2(length))
         c = ("0" * (l - len(b))) + b
         total+=sum([1 for bit in c if c == '0'])
 
     return total
 
 def run_1(test):
-    output = str(subprocess.check_output('retic %s/Fsm0.py' % test, shell=True),
-                 encoding="utf-8")
+    os.system("rm -rf __pycache__")
+    os.system("rm -rf %s/__pycache__" % test)
+    run(test)
+    vals = []
+    for i in range(3):
+      vals.append(run(test))
+    return sum(vals) / len(vals)
 
-    return output
+def run(test):
+    return float(str(subprocess.check_output('retic %s/Fsm0.py' % test, shell=True),
+                     encoding="utf-8"))
 
-run_all('/Users/zeinamigeed/sample_fsm_python/Benchmark',
-        '/Users/zeinamigeed/sample_fsm_python/Test',
-        '/Users/zeinamigeed/sample_fsm_python/output.py')
+run_all('/home/ben/code/racket/benchmark/sample_fsm_python/Benchmark',
+        '/home/ben/code/racket/benchmark/sample_fsm_python/Test',
+        '/home/ben/code/racket/benchmark/sample_fsm_python/output.py')
