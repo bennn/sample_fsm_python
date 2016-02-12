@@ -35,7 +35,7 @@ def run_all(benchmark, test, output):
 def count_types(nums, lengths):
     """
     Number of typed functions across all the files
-    :param nums: List of int
+    :param nums: List of string
     :param lengths: lengths[i] is upper bound for nums[i]
     :return: Int, representing number of annotated functions in the file
     """
@@ -44,7 +44,7 @@ def count_types(nums, lengths):
         b = bin(int(num))[2:]
         l = int(log2(length))
         c = ("0" * (l - len(b))) + b
-        total+=sum([1 for bit in c if c == '0'])
+        total += sum([1 for bit in c if bit == '0'])
 
     return total
 
@@ -61,6 +61,7 @@ def run(test):
     return float(str(subprocess.check_output('retic %s/Fsm0.py' % test, shell=True),
                      encoding="utf-8"))
 
-run_all('/home/ben/code/racket/benchmark/sample_fsm_python/Benchmark',
-        '/home/ben/code/racket/benchmark/sample_fsm_python/Test',
-        '/home/ben/code/racket/benchmark/sample_fsm_python/output.py')
+
+run_all('/Users/zeinamigeed/sample_fsm_python/Benchmark',
+        '/Users/zeinamigeed/sample_fsm_python/Test',
+        '/Users/zeinamigeed/sample_fsm_python/output.py')

@@ -108,7 +108,7 @@ def branch(prefixes, suffixes):
     return res
 
 
-all_configurations("/home/ben/code/racket/benchmark/sample_fsm_python/Typed/Other.py",
-                   "/home/ben/code/racket/benchmark/sample_fsm_python/Benchmark/")
+all_configurations("/Users/zeinamigeed/sample_fsm_python/Typed/Other.py",
+                   "/Users/zeinamigeed/sample_fsm_python/Benchmark/")
 
 
