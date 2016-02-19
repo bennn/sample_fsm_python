@@ -3,10 +3,10 @@ from retic import List, Void
 from Utilities import choose_randomly
 from Automata import Automaton
 from copy import copy
+from Timer import data_path
 
 #TODO: cannot type a variable in retic
-data = (list(map(int, [line.strip() for line in open(
-    "/Users/zeinamigeed/sample_fsm_python/population-random-numbers.txt")])))
+data = (list(map(int, [line.strip() for line in open(data_path("population-random-numbers.txt"))])))
 rand_num = (element for element in data)
 
 class Population:

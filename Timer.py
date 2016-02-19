@@ -1,3 +1,4 @@
+import os
 import time
 
 # Usage:
@@ -5,6 +6,9 @@ import time
 #    with t:
 #       <some-computation>
 #    # Prints time, at the end
+
+def data_path(fname):
+  return os.path.join(os.path.dirname(__file__), fname)
 
 class Timer:
 

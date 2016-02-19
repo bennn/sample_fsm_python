@@ -1,8 +1,8 @@
 from retic import List
+from Timer import data_path
 
 #TODO: cannot type variables in retic
-data = (list(map(float, [line.strip() for line in open(
-    "/Users/zeinamigeed/sample_fsm_python/utill-random-numbers.txt")])))
+data = (list(map(float, [line.strip() for line in open(data_path("utill-random-numbers.txt"))])))
 rand_num = (element for element in data)
 
 

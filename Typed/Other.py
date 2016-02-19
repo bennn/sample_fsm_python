@@ -1,11 +1,11 @@
 from Population import Population
 from Automata import Automaton
 from random import randrange
-
+from Timer import data_path
 
 #TODO: Cannot type variable in retic
-data = (list(map(int, [line.strip() for line in open(
-    "/Users/zeinamigeed/sample_fsm_python/automata-random-numbers.txt")])))
+data = (list(map(int, [line.strip() for line in
+    open(data_path("automata-random-numbers.txt"))])))
 rand_num = (element for element in data)
 
 
