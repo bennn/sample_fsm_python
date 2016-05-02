@@ -17,8 +17,12 @@ def make_random_automaton(n: int)->Automaton:
     :return: Automation
     """
     seed = (next(rand_num))
-    table = [[(next(rand_num)) for _ in range(n)] for _ in range(n)]
-    return Automaton(seed, 0, table, seed)
+    print(seed)
+
+    # table = [[(next(rand_num)) for _ in range(n)] for _ in range(n)]
+    table = [[0, 0], [1, 1]]
+    return Automaton(0, 0.0, table, 0)
+
 
 
 def build_random_population(n: int)->Population:
@@ -28,9 +32,11 @@ def build_random_population(n: int)->Population:
     :return: Population
     """
     DEF_COO = 2
-    v = []
-    for i in range(n):
-        v = v + [make_random_automaton(DEF_COO)]
+    # v = []
+    # for i in range(n):
+    #     x = make_random_automaton(DEF_COO)
+    #     v.insert(0, x)
+    v = [make_random_automaton(DEF_COO) for i in range(n)]
     return Population(v)
 
 

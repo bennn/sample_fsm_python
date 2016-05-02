@@ -7,7 +7,6 @@ class Automaton:
     PAYOFF_TABLE = [[(3, 3), (0, 4)],
                     [(4, 0), (1, 1)]]
 
-    #TODO: Should return an Automation. Bug preventing adding this type.
     def __init__(self: Automaton, current: int,
                  payoff: float,
                  table: List(List(int)),
@@ -58,6 +57,7 @@ class Automaton:
         :return: Automation
         """
         return Automaton(self.current, 0, self.table, self.initial)
+
 
     # def __eq__(self: Automaton, other: Dyn) -> bool:
     #     if not isinstance(other, Automaton):

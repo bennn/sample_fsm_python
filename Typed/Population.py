@@ -64,4 +64,3 @@ class Population:
             b[j] = self.a[i]
         self.a = b
 
-

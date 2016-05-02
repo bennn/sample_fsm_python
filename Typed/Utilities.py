@@ -32,3 +32,4 @@ def choose_randomly(probabilities:List(float), speed:int)->List(int):
 
 def relative_average(l: List(float), w: float) -> float:
     return sum(l) / w / len(l)
+
