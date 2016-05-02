@@ -27,18 +27,18 @@ def grim_trigger(p0):
 
 def test_automata1():
     result = defects(0).interact(cooperates(0), 10)
-    assert result[0].pay() == 40
-    assert result[1].pay() == 0
+    assert result[0].payoff == 40
+    assert result[1].payoff == 0
 
 def test_automata2():
     result = defects(0).interact(tit_for_tat(0), 10)
-    assert result[0].pay() == 13
-    assert result[1].pay() == 9
+    assert result[0].payoff == 13
+    assert result[1].payoff == 9
 
 def test_automata3():
     result = tit_for_tat(0).interact(defects(0), 10)
-    assert result[0].pay() == 9
-    assert result[1].pay() == 13
+    assert result[0].payoff == 9
+    assert result[1].payoff == 13
 
 def test_make_random_automaton():
     assert isinstance(make_random_automaton(3), Automaton)
