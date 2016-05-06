@@ -29,10 +29,6 @@ def build_random_population(n: int)->Population:
     :return: Population
     """
     DEF_COO = 2
-    # v = []
-    # for i in range(n):
-    #     x = make_random_automaton(DEF_COO)
-    #     v.insert(0, x)
     v = [make_random_automaton(DEF_COO) for i in range(n)]
     return Population(v)
 
