@@ -1,5 +1,5 @@
 #!/usr/bin/env retic
-from retic import List, Void
+from retic import List, Void, Int, Float
 from Utilities import choose_randomly
 from Automata import Automaton
 from copy import copy
@@ -21,13 +21,13 @@ class Population:
     def __init__(self: Population, a: List(Automaton)) -> Void:
         self.a = a
 
-    def payoffs(self: Population)->List(float):
+    def payoffs(self: Population)->List(Float):
         result = []
         for element in self.a:
             result = result + [element.payoff]
         return result
 
-    def match_up(self: Population, r: int) -> Population:
+    def match_up(self: Population, r: Int) -> Population:
         """
         matches up neighboring pairs of
         automata in this population for r rounds
@@ -43,7 +43,7 @@ class Population:
             self.a[i+1] = a[1]
         return self
 
-    def regenerate(self:Population, rate: int)->Population:
+    def regenerate(self:Population, rate: Int)->Population:
         """
         Replaces r elements of p with r 'children' of randomly chosen
         fittest elements of p, also shuffle constraint (r < (len p))

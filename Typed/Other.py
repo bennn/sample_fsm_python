@@ -1,6 +1,7 @@
 from Population import Population
 from Automata import Automaton
 from random import randrange
+from retic import Int
 
 import os, sys
 this_package_path = os.path.dirname(os.path.abspath(__file__))
@@ -12,7 +13,7 @@ data = (list(map(int, [line.strip() for line in open(
 rand_num = (element for element in data)
 
 
-def make_random_automaton(n: int)->Automaton:
+def make_random_automaton(n: Int)->Automaton:
     """
     builds an n states x k inputs automation
     with a random transition table
@@ -25,7 +26,7 @@ def make_random_automaton(n: int)->Automaton:
 
 
 
-def build_random_population(n: int)->Population:
+def build_random_population(n: Int)->Population:
     """
     for even n, build a population of size n
     :param n: Natural

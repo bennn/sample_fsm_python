@@ -1,4 +1,4 @@
-from retic import List, Dyn, Void, String
+from retic import List, Dyn, Void, String, Int, Float
 
 
 class Automaton:
@@ -7,16 +7,16 @@ class Automaton:
     PAYOFF_TABLE = [[(3, 3), (0, 4)],
                     [(4, 0), (1, 1)]]
 
-    def __init__(self: Automaton, current: int,
-                 payoff: float,
-                 table: List(List(int)),
-                 initial: int)->Void:
+    def __init__(self: Automaton, current: Int,
+                 payoff: Float,
+                 table: List(List(Int)),
+                 initial: Int)->Void:
         self.current = current
         self.payoff = payoff
         self.table = table
         self.initial = initial
 
-    def interact(self: Automaton, other: Automaton, r: int) -> List(Automaton):
+    def interact(self: Automaton, other: Automaton, r: Int) -> List(Automaton):
         """
         the sum of pay-offs for the two respective automata over all rounds
         :param other: Automaton
@@ -59,7 +59,7 @@ class Automaton:
         return Automaton(self.current, 0, self.table, self.initial)
 
 
-    # def __eq__(self: Automaton, other: Dyn) -> bool:
+    # def __eq__(self: Automaton, other: Dyn) -> Bool:
     #     if not isinstance(other, Automaton):
     #         return False
     #     else:

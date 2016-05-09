@@ -1,4 +1,4 @@
-from retic import List
+from retic import List, Float, Int
 
 import os, sys
 this_package_path = os.path.dirname(os.path.abspath(__file__))
@@ -10,7 +10,7 @@ data = (list(map(float, [line.strip() for line in open(
 rand_num = (element for element in data)
 
 
-def accumulated_s(probabilities:List(float))->List(float):
+def accumulated_s(probabilities:List(Float))->List(Float):
     total = sum(probabilities)
     payoffs = probabilities
     result = []
@@ -20,7 +20,7 @@ def accumulated_s(probabilities:List(float))->List(float):
         result = result + [next/total]
     return result
 
-def choose_randomly(probabilities:List(float), speed:int)->List(int):
+def choose_randomly(probabilities:List(Float), speed:Int)->List(Int):
 
     s = accumulated_s(probabilities)
     res = []  ### changed here
@@ -34,6 +34,6 @@ def choose_randomly(probabilities:List(float), speed:int)->List(int):
     return res  ### and here
 
 
-def relative_average(l: List(float), w: float) -> float:
+def relative_average(l: List(Float), w: Float) -> Float:
     return sum(l) / w / len(l)
 
