@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.join(this_package_path, '..'))
 
 #TODO: Cannot type variable in retic
 data = (list(map(int, [line.strip() for line in open(
-    "automata-random-numbers.txt")])))
+    "population-random-numbers.txt")])))
 rand_num = (element for element in data)
 
 class Population:
