@@ -7,8 +7,6 @@ from Population import Population
 from Utilities import relative_average
 from Other import build_random_population
 from retic import List, Void, Tuple
-
-
 def run() -> Void:
     simulation_to_lines(evolve(build_random_population(100), 10, 2, 1))
     return
