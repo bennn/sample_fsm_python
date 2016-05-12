@@ -1,8 +1,12 @@
 from retic import List
 
-#TODO: cannot type variables in retic
+import os, sys
+this_package_path = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(this_package_path, '..'))
+
+#TODO: Cannot type variable in retic
 data = (list(map(float, [line.strip() for line in open(
-    "/Users/zeinamigeed/sample_fsm_python/utill-random-numbers.txt")])))
+    "utill-random-numbers.txt")])))
 rand_num = (element for element in data)
 
 
